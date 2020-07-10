@@ -1,10 +1,19 @@
 <?php
 //arrive, sejong gov building
  
-$lat1= '126.978304';
-$lon1= '37.574240';
-$lat2= '127.289030'; //세종시청
-$lon2= '36.480146';
+//$lat1= '126.978304';
+//$lon1= '37.574240';
+//$lat2= '127.289030'; //세종시청
+//$lon2= '36.480146';
+
+$co1 = $_GET['co1'];
+$co2 = $_GET['co2'];
+
+$lat1 = trim(explode(",", $co1)[1]);
+$lon1 = trim(explode(",", $co1)[0]);
+$lat2 = trim(explode(",", $co2)[1]);
+$lon2 = trim(explode(",", $co2)[0]);
+
 
 //$lat2= '127.267749'; //정부세종청사
 //$lon2= '36.504337';
@@ -31,4 +40,3 @@ if ($result === false) {
 
 curl_close($ch);
 ?>
-hi
