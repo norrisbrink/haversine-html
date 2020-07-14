@@ -77,61 +77,29 @@ function proc(result) {
 		//console.log(i, result.path[i], distance(result.path[i][1],result.path[i][0],36.067917,129.378449,"K"));
 		//console.log(i, result.path[i], getDistanceFromLatLonInKm(result.path[i][1],result.path[i][0],36.067917,129.378449));
 		let d = 0;
+		let cs = '';
 		for (k = 0; k < compJson.path.length; k++) {
 			seekSeq++;
 			//d = getDistanceFromLatLonInKm(result.path[i][1],result.path[i][0],compJson.path[k][1],compJson.path[k][0])
 			d = distance(result.path[i][1],result.path[i][0],compJson.path[k][1],compJson.path[k][0],"K")
 			if (d < 5) {
-				/*cs += "\n"+'i2:'+i;
-				cs += "\n"+'s'+seekSeq;
-				cs += "\n"+'p co:'+result.path[i];
-				cs += "\n"+'c co:'+compJson.path[k];
-				cs += "\n"+'d'+d;
-				cs += "\n"+'----------------------------';*/
-
-				cs += "<br/>"+'i2:'+i;
-				cs += "<br/>"+'s'+seekSeq;
-				cs += "<br/>"+'p co:'+result.path[i];
-				cs += "<br/>"+'c co:'+compJson.path[k];
-				cs += "<br/>"+'d'+d;
-				cs += "<br/>"+'----------------------------';
-				
-				//cs += "\n"+seekSeq;
-				//cs += "\n"+result.path[i];
-				//cs += "\n"+compJson.path[k];
-				//cs += "\n"+d;
-				//Logger.info(cs);
-				//cs += "\n"+'';
-				//log.info(cs);
-				//myLogger.info(cs);
-				//document.write(i, result.path[i], compJson.path[k], d);
+				cs += 'i3:'+i;
+				cs += ',s'+seekSeq;
+				cs += ',p co:'+result.path[i];
+				cs += ',c co:'+compJson.path[k];
+				cs += ',d'+d;
 			} else {
 				
-				cs += "<br/>"+'i2:'+i;
-				cs += "<br/>"+'s'+seekSeq;
-				cs += "<br/>"+'p co:'+result.path[i];
-				cs += "<br/>"+'c co:'+compJson.path[k];
-				cs += "<br/>"+'d'+d;
-				cs += "<br/>"+'----------------------------';
-				/*cs += "\n"+result.path[i];
-				cs += "\n"+compJson.path[k];
-				cs += "\n"+d;*/
-				/*cs += "\n"+'path index:'+i;
-				cs += "\n"+'seekSequence'+seekSeq;
-				cs += "\n"+'path coordinate:'+result.path[i];
-				cs += "\n"+'company coordinate:'+compJson.path[k];
-				cs += "\n"+'distance(km)'+d;
-				cs += "\n"+'----------------------------';*/
-				//console.log('====='+i, result.path[i], compJson.path[k], d);
+				cs += 'i3:'+i;
+				cs += ',s'+seekSeq;
+				cs += ',p co:'+result.path[i];
+				cs += ',c co:'+compJson.path[k];
+				cs += ',d'+d;
 			}
-			//$('#ta').append(cs+"\n");
-			//cs = '';
+			$('#ta').append(cs+"\n");
+			console.log(cs);
+			cs = null;
 		}
-		console.log('.');
-		$('#ta').append(cs+"\n");
-		cs = '';
-
-		//console.log(i, result.path[i], d);
 	}
 	console.timeEnd('distance()');
 	
@@ -139,11 +107,7 @@ function proc(result) {
 
 	console.log('seekSeq: '+seekSeq);
 
-	//console.log('console.log time(ms): ' + consoleTimeTotal);
-
-	//$('#log').append(cs);
-
-	localStorage.setItem("log", cs);
+	//localStorage.setItem("log", cs);
 
 	alert('done!');
 	
